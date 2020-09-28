@@ -2,9 +2,9 @@
 # Inspired by the Arch Linux equivalent package.....
 #
 Name     : mozjs78
-Version  : 78.2.0
-Release  : 5
-Source0  : https://archive.mozilla.org/pub/firefox/releases/78.2.0esr/source/firefox-78.2.0esr.source.tar.xz
+Version  : 78.3.0
+Release  : 6
+Source0  : https://archive.mozilla.org/pub/firefox/releases/78.3.0esr/source/firefox-78.3.0esr.source.tar.xz
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSD-3-Clause BSD-3-Clause-Clear GPL-2.0 LGPL-2.0 LGPL-2.1 MIT MPL-2.0-no-copyleft-exception
 Requires: mozjs78-bin
@@ -37,8 +37,7 @@ Patch1: fix-soname.patch
 Patch2: copy-headers.patch
 Patch3: init_patch.patch
 Patch4: emitter.patch
-Patch5: emitter_test.patch
-Patch6: spidermonkey_checks_disable.patch
+Patch5: spidermonkey_checks_disable.patch
 
 # Suppress stripping binaries
 %define __strip /bin/true
@@ -75,14 +74,13 @@ lib components for the mozjs78 package.
 
 
 %prep
-%setup -q -n firefox-78.2.0
+%setup -q -n firefox-78.3.0
 
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-#%patch5 -p1
-%patch6 -p1
+%patch5 -p1
 
 # use system zlib for perf
 rm -rf ../../modules/zlib
@@ -106,7 +104,7 @@ export CC=gcc CXX=g++ PYTHON=/usr/bin/python2
 pushd js/src
 
 autoconf213
-%configure --disable-static --with-x \
+%configure --disable-static \
     --prefix=/usr \
     --disable-debug \
     --enable-debug-symbols \
@@ -120,6 +118,7 @@ autoconf213
     --enable-tests \
     --with-intl-api \
     --with-system-zlib \
+    --with-x \
     --program-suffix=78 \
     --without-system-icu
 
@@ -136,14 +135,9 @@ popd
 rm %{buildroot}/usr/lib64/*.ajs
 
 cp %{buildroot}/usr/lib64/libmozjs-78.so %{buildroot}/usr/lib64/libmozjs-78.so.0
-#find %{buildroot}/usr/{lib/pkgconfig,include} -type f -exec chmod -c a-x {} +
-## make_install_append content
-#mv %{buildroot}/usr/lib64/pkgconfig/js.pc %{buildroot}/usr/lib64/pkgconfig/mozjs-60.pc
-## make_install_append end
 
 %files
 %defattr(-,root,root,-)
-#/usr/lib64/libjs_static.ajs
 
 %files bin
 %defattr(-,root,root,-)
