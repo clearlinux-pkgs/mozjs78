@@ -2,9 +2,9 @@
 # Inspired by the Arch Linux equivalent package.....
 #
 Name     : mozjs78
-Version  : 78.3.0
-Release  : 6
-Source0  : https://archive.mozilla.org/pub/firefox/releases/78.3.0esr/source/firefox-78.3.0esr.source.tar.xz
+Version  : 78.4.0
+Release  : 7
+Source0  : https://archive.mozilla.org/pub/firefox/releases/78.4.0esr/source/firefox-78.4.0esr.source.tar.xz
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSD-3-Clause BSD-3-Clause-Clear GPL-2.0 LGPL-2.0 LGPL-2.1 MIT MPL-2.0-no-copyleft-exception
 Requires: mozjs78-bin
@@ -74,7 +74,7 @@ lib components for the mozjs78 package.
 
 
 %prep
-%setup -q -n firefox-78.3.0
+%setup -q -n firefox-%{version}
 
 %patch1 -p1
 %patch2 -p1
