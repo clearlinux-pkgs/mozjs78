@@ -3,7 +3,7 @@
 #
 Name     : mozjs78
 Version  : 78.10.1
-Release  : 14
+Release  : 15
 Source0  : https://archive.mozilla.org/pub/firefox/releases/78.10.1esr/source/firefox-78.10.1esr.source.tar.xz
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSD-3-Clause BSD-3-Clause-Clear GPL-2.0 LGPL-2.0 LGPL-2.1 MIT MPL-2.0-no-copyleft-exception
@@ -38,10 +38,6 @@ Patch2: copy-headers.patch
 Patch3: init_patch.patch
 Patch4: emitter.patch
 Patch5: spidermonkey_checks_disable.patch
-
-# Suppress stripping binaries
-%define __strip /bin/true
-%define debug_package %{nil}
 
 %description
 JavaScript interpreter and libraries - Version 78
