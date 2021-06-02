@@ -3,7 +3,7 @@
 #
 Name     : mozjs78
 Version  : ##VERSION##
-Release  : 13
+Release  : ##RELEASE##
 Source0  : https://archive.mozilla.org/pub/firefox/releases/##VERSION##esr/source/firefox-##VERSION##esr.source.tar.xz
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSD-3-Clause BSD-3-Clause-Clear GPL-2.0 LGPL-2.0 LGPL-2.1 MIT MPL-2.0-no-copyleft-exception
