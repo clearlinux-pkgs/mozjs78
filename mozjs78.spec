@@ -2,9 +2,9 @@
 # Inspired by the Arch Linux equivalent package.....
 #
 Name     : mozjs78
-Version  : 78.11.0
-Release  : 16
-Source0  : https://archive.mozilla.org/pub/firefox/releases/78.11.0esr/source/firefox-78.11.0esr.source.tar.xz
+Version  : 78.12.0
+Release  : 17
+Source0  : https://archive.mozilla.org/pub/firefox/releases/78.12.0esr/source/firefox-78.12.0esr.source.tar.xz
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSD-3-Clause BSD-3-Clause-Clear GPL-2.0 LGPL-2.0 LGPL-2.1 MIT MPL-2.0-no-copyleft-exception
 Requires: mozjs78-bin
