@@ -1,0 +1,21 @@
+we're not using this for browsers so we have a lisghlty different security profile..
+.. normal stack protctor is enough, we don't need the -strong option
+
+--- firefox-78.15.0/build/moz.configure/toolchain.configure~	2021-09-28 10:04:51.000000000 +0000
++++ firefox-78.15.0/build/moz.configure/toolchain.configure	2021-10-14 13:22:13.544877421 +0000
+@@ -1608,15 +1608,6 @@
+                 ldflags.append('-lssp')
+                 js_ldflags.append('-lssp')
+ 
+-        # fstack-protector ------------------------------------
+-        # Enable only if hardening is not disabled and ASAN is
+-        # not on as ASAN will catch the crashes for us
+-        if compiler_is_gccish and not asan:
+-            flags.append("-fstack-protector-strong")
+-            ldflags.append("-fstack-protector-strong")
+-            js_flags.append("-fstack-protector-strong")
+-            js_ldflags.append("-fstack-protector-strong")
+-
+         # ftrivial-auto-var-init ------------------------------
+         # Initialize local variables with a 0xAA pattern in clang debug builds.
+         # Linux32 fails some xpcshell tests with -ftrivial-auto-var-init
