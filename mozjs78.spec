@@ -3,7 +3,7 @@
 #
 Name     : mozjs78
 Version  : 78.15.0
-Release  : 21
+Release  : 22
 URL      : https://archive.mozilla.org/pub/firefox/releases/78.15.0esr/source/firefox-78.15.0esr.source.tar.xz
 Source0  : https://archive.mozilla.org/pub/firefox/releases/78.15.0esr/source/firefox-78.15.0esr.source.tar.xz
 Group    : Development/Tools
