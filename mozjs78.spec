@@ -3,33 +3,32 @@
 #
 Name     : mozjs78
 Version  : 78.15.0
-Release  : 23
+Release  : 24
 URL      : https://archive.mozilla.org/pub/firefox/releases/78.15.0esr/source/firefox-78.15.0esr.source.tar.xz
 Source0  : https://archive.mozilla.org/pub/firefox/releases/78.15.0esr/source/firefox-78.15.0esr.source.tar.xz
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSD-3-Clause BSD-3-Clause-Clear GPL-2.0 LGPL-2.0 LGPL-2.1 MIT MPL-2.0-no-copyleft-exception
 Requires: mozjs78-bin
 Requires: mozjs78-lib
-Requires: psutil
-Requires: pyOpenSSL
-Requires: pyasn1
-Requires: wheel
+Requires: pypi-psutil
+Requires: pypi-pyopenssl
+Requires: pypi-pyasn1
+Requires: pypi-wheel
 BuildRequires : icu4c-dev
 BuildRequires : nspr-dev
-BuildRequires : pbr
-BuildRequires : pip
+BuildRequires : pypi-pbr
+BuildRequires : pypi-pip
 BuildRequires : pkgconfig(libffi)
 BuildRequires : pkgconfig(x11)
-BuildRequires : psutil
+BuildRequires : pypi-psutil
 BuildRequires : python-core
 BuildRequires : python-dev
 BuildRequires : python3-dev
-BuildRequires : setuptools
+BuildRequires : pypi-setuptools
 BuildRequires : zlib-dev
 BuildRequires : autoconf213
 BuildRequires : readline-dev
 BuildRequires : ncurses-dev
-BuildRequires : psutil
 BuildRequires : rustc
 BuildRequires : llvm-dev
 Summary: mozjs
@@ -40,6 +39,7 @@ Patch3: init_patch.patch
 Patch4: emitter.patch
 Patch5: spidermonkey_checks_disable.patch
 Patch6: not-a-browser.patch
+Patch7: 0001-Fix-module-moving.patch
 
 %description
 JavaScript interpreter and libraries - Version 78
@@ -80,6 +80,7 @@ lib components for the mozjs78 package.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 # use system zlib for perf
 rm -rf ../../modules/zlib
