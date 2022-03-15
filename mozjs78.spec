@@ -3,7 +3,7 @@
 #
 Name     : mozjs78
 Version  : 78.15.0
-Release  : 25
+Release  : 26
 URL      : https://archive.mozilla.org/pub/firefox/releases/78.15.0esr/source/firefox-78.15.0esr.source.tar.xz
 Source0  : https://archive.mozilla.org/pub/firefox/releases/78.15.0esr/source/firefox-78.15.0esr.source.tar.xz
 Group    : Development/Tools
@@ -21,8 +21,7 @@ BuildRequires : pypi-pip
 BuildRequires : pkgconfig(libffi)
 BuildRequires : pkgconfig(x11)
 BuildRequires : pypi-psutil
-BuildRequires : python-core
-BuildRequires : python-dev
+BuildRequires : python3-core
 BuildRequires : python3-dev
 BuildRequires : pypi-setuptools
 BuildRequires : zlib-dev
@@ -39,7 +38,8 @@ Patch3: init_patch.patch
 Patch4: emitter.patch
 Patch5: spidermonkey_checks_disable.patch
 Patch6: not-a-browser.patch
-Patch7: 0001-Fix-module-moving.patch
+Patch7: 0001-Fixes-for-Python-3.10.patch
+Patch8: 0002-Fixes-for-Rust-1.56.patch
 
 %description
 JavaScript interpreter and libraries - Version 78
@@ -81,6 +81,7 @@ lib components for the mozjs78 package.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 # use system zlib for perf
 rm -rf ../../modules/zlib
@@ -102,7 +103,7 @@ export CXXFLAGS="-Os -falign-functions=4 -fno-semantic-interposition -fno-signed
 export AUTOCONF="/usr/bin/autoconf213"
 CFLAGS+=' -fno-delete-null-pointer-checks -fno-strict-aliasing -fno-tree-vrp '
 CXXFLAGS+=' -fno-delete-null-pointer-checks -fno-strict-aliasing -fno-tree-vrp '
-export CC=gcc CXX=g++ PYTHON=/usr/bin/python2
+export CC=gcc CXX=g++ PYTHON=/usr/bin/python
 
 pushd js/src
 
@@ -133,7 +134,7 @@ export CFLAGS="-O3 -fno-semantic-interposition -fno-signed-zeros -march=x86-64-v
 export CXXFLAGS="-O3 -fno-semantic-interposition -fno-signed-zeros -march=x86-64-v3 -mno-vzeroupper -fstack-protector -mtune=skylake"
 CFLAGS+=' -fno-delete-null-pointer-checks -fno-strict-aliasing -fno-tree-vrp '
 CXXFLAGS+=' -fno-delete-null-pointer-checks -fno-strict-aliasing -fno-tree-vrp '
-export CC=gcc CXX=g++ PYTHON=/usr/bin/python2
+export CC=gcc CXX=g++ PYTHON=/usr/bin/python
 autoconf213
 %configure --disable-static \
     --prefix=/usr \
