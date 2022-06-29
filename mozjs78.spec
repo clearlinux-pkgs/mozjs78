@@ -3,7 +3,7 @@
 #
 Name     : mozjs78
 Version  : 78.15.0
-Release  : 26
+Release  : 27
 URL      : https://archive.mozilla.org/pub/firefox/releases/78.15.0esr/source/firefox-78.15.0esr.source.tar.xz
 Source0  : https://archive.mozilla.org/pub/firefox/releases/78.15.0esr/source/firefox-78.15.0esr.source.tar.xz
 Group    : Development/Tools
@@ -175,7 +175,7 @@ rm %{buildroot}*/usr/lib64/*.ajs
 cp %{buildroot}/usr/lib64/libmozjs-78.so %{buildroot}/usr/lib64/libmozjs-78.so.0
 cp %{buildroot}-v3/usr/lib64/libmozjs-78.so %{buildroot}-v3/usr/lib64/libmozjs-78.so.0
 
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -184,6 +184,7 @@ cp %{buildroot}-v3/usr/lib64/libmozjs-78.so %{buildroot}-v3/usr/lib64/libmozjs-7
 %defattr(-,root,root,-)
 /usr/bin/js78
 /usr/bin/js78-config
+/usr/share/clear/filemap/filemap-*
 /usr/share/clear/optimized-elf/bin*
 
 %files dev
@@ -193,7 +194,7 @@ cp %{buildroot}-v3/usr/lib64/libmozjs-78.so %{buildroot}-v3/usr/lib64/libmozjs-7
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/glibc-hwcaps/x86-64-v3/libmozjs-78.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libmozjs-78.so.0
 /usr/lib64/libmozjs-78.so
 /usr/lib64/libmozjs-78.so.0
-/usr/share/clear/optimized-elf/lib*
-/usr/share/clear/filemap/filemap-*
